@@ -1,0 +1,50 @@
+:root {
+    --hover-color: #5ECE7B;
+    --headerItem-font: 16px Raleway:
+}
+
+.header {
+    padding: 20px 33px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.headerItems {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.endItems {
+    justify-content: end;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+
+.headerItem {
+    margin-left: 20px;
+    cursor: pointer;
+    line-height: 19.2px;
+    font-weight: 400 normal;
+    font-size: 16px;
+    font: 'Raleway';
+
+}
+
+.headerItem:hover {
+    color: var(--hover-color);
+    transform: scale(1.06);
+
+}
+
+.headerItem:active,
+.headerItem::after,
+.headerItem:focus {
+    color: var(--hover-color);
+    text-decoration: underline;
+}
