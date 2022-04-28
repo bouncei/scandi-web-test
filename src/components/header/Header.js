@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.css";
+import down from "../../assets/down.svg";
 
 import { PureComponent } from "react";
 
@@ -19,8 +20,17 @@ export class Header extends PureComponent {
 
         {/*Right side*/}
         <div className="endItems">
-          <div className="headerItem">CurrencyIcon</div>
-          <div className="headerItem">CartIcon</div>
+          <div className="headerItem dropdown">
+            <div className=".link">CurrencyIcon</div>
+            <img src={down} alt="" height={15} width={20} />
+            <div className="dropdown-menu">USD</div>
+          </div>
+          <div className="headerItem dropdown">
+            <div className="link">CartIcon</div>
+            <img src={down} alt="" height={15} width={20} />
+
+            <div className="dropdown-menu"></div>
+          </div>
         </div>
       </div>
     );

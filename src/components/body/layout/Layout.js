@@ -15,7 +15,14 @@ export class Layout extends PureComponent {
         <h2 className="category__title">{this.props.title}</h2>
 
         {/* Array of products in CardComponents using .map() */}
-        <ItemCard />
+        <div className="products">
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
+        </div>
       </div>
     );
   }
