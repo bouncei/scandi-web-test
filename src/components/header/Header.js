@@ -3,17 +3,19 @@ import "./Header.css";
 import down from "../../assets/down.svg";
 
 import { PureComponent } from "react";
+import ToggleCart from "./toggleCart/ToggleCart";
 
 export class Header extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      toggle: false,
+      toggleCurr: false,
+      toggleCart: false,
     };
   }
   render() {
     {
-      console.log(this.state.toggle);
+      console.log(this.state.toggleCurr);
     }
     return (
       <div className="header">
@@ -33,14 +35,19 @@ export class Header extends PureComponent {
             <div
               className="link"
               onClick={() => {
-                this.setState({ toggle: !this.state.toggle });
+                if (this.state.toggleCart === true) {
+                  this.setState({ toggleCart: !this.state.toggleCart });
+                }
+                this.setState({ toggleCurr: !this.state.toggleCurr });
               }}
             >
               CurrencyIcon
             </div>
             <img src={down} alt="" height={15} width={20} />
             <div
-              className={`dropdown-menu ${this.state.toggle && "active-menu"}`}
+              className={`dropdown-menu ${
+                this.state.toggleCurr && "active-menu"
+              }`}
             >
               <div className="currency">USD</div>
               <div className="currency">EUR</div>
@@ -48,10 +55,23 @@ export class Header extends PureComponent {
             </div>
           </div>
           <div className="headerItem dropdown">
-            <div className="link">CartIcon</div>
+            <div
+              className="link"
+              onClick={() => {
+                if (this.state.toggleCurr === true) {
+                  this.setState({ toggleCurr: !this.state.toggleCurr });
+                }
+                this.setState({ toggleCart: !this.state.toggleCart });
+              }}
+            >
+              CartIcon
+            </div>
             <img src={down} alt="" height={15} width={20} />
 
-            <div className="dropdown-menu">CART DETAILS</div>
+            <div
+              className={`dropdown ${this.state.toggleCart && "active-menu"}`}
+            ></div>
+            {this.state.toggleCart ? <ToggleCart /> : ""}
           </div>
         </div>
       </div>

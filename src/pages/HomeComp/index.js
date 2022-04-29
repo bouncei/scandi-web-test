@@ -21,7 +21,7 @@ export class ParentComp extends Component {
   // }
 
   render() {
-    console.log();
+    // console.log();
     return (
       <>
         {/* ParentComp*/}

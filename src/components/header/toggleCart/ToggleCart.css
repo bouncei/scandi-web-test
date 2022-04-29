@@ -1,0 +1,28 @@
+.toggle__cart {
+    opacity: 1;
+
+    position: absolute;
+    /* left: 0; */
+    right: calc(100% - 5rem);
+    top: calc(100% + 1.2rem);
+    /* top: calc(100% + .35rem); */
+    overflow: hidden;
+    padding: .75rem;
+    width: 200px;
+    /* padding-right: 30rem; */
+    border-radius: .25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+
+    transition: opaciity 150ms ease-in-out;
+    background-color: white;
+}
+
+.item {
+    padding-top: 7px;
+    color: none;
+    cursor: pointer;
+}
+
+.item:hover {
+    color: var(--dropdown-click)
+}
