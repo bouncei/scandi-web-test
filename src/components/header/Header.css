@@ -1,6 +1,7 @@
 :root {
     --hover-color: #5ECE7B;
-    --headerItem-font: 16px Raleway:
+    --headerItem-font: 16px Raleway;
+    --dropdown-click: rgb(173, 65, 65);
 }
 
 .header {
@@ -37,16 +38,27 @@
 
 }
 
-.headerItem:hover {
+/* .headerItem:hover {
     color: var(--hover-color);
+
+
+} */
+.link {
+    transition: all 300ms ease-in-out;
+
+}
+
+.link:hover {
     transform: scale(1.06);
+    color: var(--hover-color);
+    text-decoration: underline;
 
 
 }
 
-.headerItem:active,
-.headerItem::after,
-.headerItem:focus {
+.link:active,
+.link::after,
+.link:focus {
     color: var(--hover-color);
     text-decoration: underline;
 }
@@ -76,7 +88,7 @@
     padding: .75rem;
     border-radius: .25rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
-    opacity: 1;
+    opacity: 0;
     transition: opaciity 150ms ease-in-out;
 }
 
@@ -84,3 +96,17 @@
 .dropdown:focus>.link:focus+.dropdown-menu {
     opacity: 1;
 } */
+
+.active-menu {
+    opacity: 1;
+}
+
+.currency {
+    padding-top: 7px;
+    color: none;
+    cursor: pointer;
+}
+
+.currency:hover {
+    color: var(--dropdown-click)
+}

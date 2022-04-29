@@ -15,4 +15,12 @@
 .products {
     display: flex;
     flex-wrap: wrap;
+
+
 }
+
+/* .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmas(100px, 1fr));
+
+} */
