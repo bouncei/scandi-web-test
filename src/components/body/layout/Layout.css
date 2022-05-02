@@ -15,7 +15,8 @@
 .products {
     display: flex;
     flex-wrap: wrap;
-
+    /* align-items: left !important; */
+    /* margin: auto; */
 
 }
 

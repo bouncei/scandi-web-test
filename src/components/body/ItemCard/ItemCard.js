@@ -9,8 +9,10 @@ export class ItemCard extends PureComponent {
         onClick={() => {}}
         style={{
           textAlign: "start",
-          // margin: "20px",
+          // margin: "0px 20px",
           margin: "auto",
+          // padding: "auto",
+          // alignItems: "start",
         }}
       >
         <img className="item__image" src={pixel} alt="Pixel Image" />

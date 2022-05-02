@@ -1,16 +1,29 @@
 import React, { Component } from "react";
-// import { BrowserRouter, Route } from "react-router-dom";
-// import Header from "./components/header/Header";
 import { Route } from "react-router-dom";
 import HomeComp from "./pages/HomeComp";
-// import logo from "./logo.svg";
 import "./style.css";
+import client from "./server";
+
 // Page Components
 // import Header from "./components/header/Header";
 // import HomePage from "./pages/HomePage";
 
+import { ApploProvider, useQuery, gql } from "@apollo/client";
+
 class App extends Component {
   render() {
+    client
+      .query({
+        query: gql`
+          query GetRates {
+            rates(currency: "USD") {
+              currency
+            }
+          }
+        `,
+      })
+      .then((result) => console.log(result));
+
     return (
       <div className="App">
         <HomeComp />
