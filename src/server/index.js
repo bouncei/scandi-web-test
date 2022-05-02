@@ -13,15 +13,3 @@ const client = new ApolloClient({
 });
 
 export default client;
-
-// client
-//   .query({
-//     query: gql`
-//       query GetRates {
-//         rates(currency: "USD") {
-//           currency
-//         }
-//       }
-//     `,
-//   })
-//   .then((result) => console.log(result));

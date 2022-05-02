@@ -2,13 +2,10 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import HomeComp from "./pages/HomeComp";
 import "./style.css";
+
 import client from "./server";
-
-// Page Components
-// import Header from "./components/header/Header";
-// import HomePage from "./pages/HomePage";
-
-import { ApploProvider, useQuery, gql } from "@apollo/client";
+import { gql } from "@apollo/client";
+import ExchangeRate from "./server/ExchangeRate";
 
 class App extends Component {
   render() {
@@ -28,6 +25,7 @@ class App extends Component {
       <div className="App">
         <HomeComp />
         <h1>This is my ScandiWeb Project</h1>
+        <ExchangeRate />
       </div>
     );
   }
