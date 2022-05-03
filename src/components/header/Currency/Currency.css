@@ -1,0 +1,16 @@
+.currency__details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.symbol,
+.label {
+    padding: 5px;
+}
+
+
+.currency__details:hover {
+    color: rgb(158, 61, 61);
+}

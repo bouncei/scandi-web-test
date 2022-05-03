@@ -1,5 +1,13 @@
+.ItemCard {
+    text-align: start;
+    margin: 20px 70px;
+
+}
+
 .item__image {
     height: 350px;
+    width: 100%;
+    /* display: block; */
     object-fit: contain;
     /* padding: 20px; */
 
@@ -7,4 +15,6 @@
 
 .details {
     text-align: start;
+    font-size: 1.4rem;
+
 }

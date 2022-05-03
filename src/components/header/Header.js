@@ -1,9 +1,15 @@
 import React from "react";
 import "./Header.css";
 import down from "../../assets/down.svg";
-
+// import an icon for direction-up too
 import { PureComponent } from "react";
 import ToggleCart from "./toggleCart/ToggleCart";
+// import CartegorySwitch from "./CategorySwitch/CartegorySwitch";
+
+import { CATEGORY_NAMES } from "../../server/queries";
+import { Query } from "@apollo/client/react/components";
+import CategorySwitch from "./CategorySwitch/CategorySwitch";
+import Currency from "./Currency/Currency";
 
 export class Header extends PureComponent {
   constructor(props) {
@@ -13,24 +19,22 @@ export class Header extends PureComponent {
       toggleCart: false,
     };
   }
+
   render() {
-    {
-      console.log(this.state.toggleCurr);
-    }
     return (
       <div className="header">
         {/*<p>Header PureComponent for {this.props.name}!</p> */}
 
-        {/*Left side*/}
-
+        {/* Left side
+          Create a class component for switching categories  
+        */}
         <div className="headerItems">
-          <div className="headerItem">WOMEN</div>
-          <div className="headerItem">MEN</div>
-          <div className="headerItem">KIDS</div>
+          <CategorySwitch />
         </div>
 
         {/*Right side*/}
         <div className="endItems">
+          {/* Currency Tab */}
           <div className="headerItem dropdown">
             <div
               className="link"
@@ -49,11 +53,12 @@ export class Header extends PureComponent {
                 this.state.toggleCurr && "active-menu"
               }`}
             >
-              <div className="currency">USD</div>
-              <div className="currency">EUR</div>
-              <div className="currency">NAIRA</div>
+              <Currency />
             </div>
           </div>
+
+          {/* Cart Tab */}
+
           <div className="headerItem dropdown">
             <div
               className="link"
