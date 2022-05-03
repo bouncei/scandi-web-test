@@ -1,30 +1,25 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+// import { Route } from "react-router-dom";
 import HomeComp from "./pages/HomeComp";
 import "./style.css";
 
-import client from "./server";
-import { gql } from "@apollo/client";
-import { Query } from "@apollo/client/react/components";
-import ExchangeRates from "./server/ExchangeRates";
-
-const CurrencyNames = gql`
-  {
-    categories {
-      name
-    }
-  }
-`;
-// import ExchangeRate from "./server/ExchangeRate";
+// React-Router-Config
+import { render } from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 class App extends Component {
   render() {
-    console.log(client);
+    // console.log(client);
     return (
       <div className="App">
-        <HomeComp />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/all" element={<HomeComp />}></Route>
+            <Route index element={<HomeComp />}></Route>
+          </Routes>
+        </BrowserRouter>
+
         <h1>This is my ScandiWeb Project</h1>
-        <ExchangeRates />
       </div>
     );
   }

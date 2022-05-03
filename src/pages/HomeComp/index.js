@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Layout from "../../components/body/layout/Layout";
+import Home from "../../components/body/layout/Home/Home";
+// import Layout from "../../components/body/layout/Layout";
 import Header from "../../components/header/Header";
 
 export class ParentComp extends Component {
@@ -25,9 +26,9 @@ export class ParentComp extends Component {
     return (
       <>
         {/* ParentComp*/}
-        <Header name={this.state.name} />
+        <Header />
         <div className="mx">
-          <Layout title={this.state.title} />
+          <Home title={this.state.title} />
         </div>
       </>
     );

@@ -2,6 +2,8 @@ import React, { PureComponent } from "react";
 import { CATEGORY_NAMES } from "../../../server/queries";
 import { Query } from "@apollo/client/react/components";
 import "./CategorySwitch.css";
+import { Link } from "react-router-dom";
+// import { categoriesSwitcher } from "../../../Redux/actions";
 
 export class CategorySwitch extends PureComponent {
   render() {
@@ -13,9 +15,13 @@ export class CategorySwitch extends PureComponent {
           if (data.categories === undefined) return null;
 
           return data.categories.map((item, index) => (
-            <div className="CategoryItem" key={index}>
-              {item.name}
-            </div>
+            <Link
+              to={`/${item.name}`}
+              key={item.name}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <div className="CategoryItem">{item.name}</div>
+            </Link>
           ));
         }}
       </Query>

@@ -1,14 +1,14 @@
 import React, { PureComponent } from "react";
-import "./Layout.css";
+import "./Home.css";
 // import styled from "styled-components";
-import ItemCard from "../ItemCard/ItemCard";
+import ItemCard from "../../ItemCard/ItemCard";
 
 // const Image = styled.img`
 //   height: 338px;
 //   object-fit: contain;
 // `;
 
-export class Layout extends PureComponent {
+export class Home extends PureComponent {
   render() {
     return (
       <div className="layout">
@@ -23,4 +23,4 @@ export class Layout extends PureComponent {
   }
 }
 
-export default Layout;
+export default Home;

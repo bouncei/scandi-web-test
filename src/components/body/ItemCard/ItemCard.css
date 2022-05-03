@@ -1,12 +1,15 @@
 .ItemCard {
+    margin: 20px 30px;
+    /* padding: 30px; */
+    margin: auto;
     text-align: start;
-    margin: 20px 70px;
+    cursor: pointer;
 
 }
 
 .item__image {
     height: 350px;
-    width: 100%;
+    width: 400px;
     /* display: block; */
     object-fit: contain;
     /* padding: 20px; */
