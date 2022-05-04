@@ -16,6 +16,7 @@ class App extends Component {
           <Routes>
             <Route path="/all" element={<HomeComp />}></Route>
             <Route index element={<HomeComp />}></Route>
+            <Route path="/tech"></Route>
           </Routes>
         </BrowserRouter>
 
