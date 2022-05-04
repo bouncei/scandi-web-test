@@ -3,11 +3,19 @@ import "./ItemCard.css";
 import pixel from "../../../assets/pi.jpg";
 import { ALL_CATEGORY_SECTION } from "../../../server/queries";
 import { Query } from "@apollo/client/react/components";
+import { Link } from "react-router-dom";
 
 class ItemCard extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      id: "",
+    };
+  }
+
+  handleClick() {
+    alert("Page routing");
+    <Link to="details" />;
   }
 
   render() {
@@ -23,7 +31,7 @@ class ItemCard extends PureComponent {
           console.log(products);
 
           return products.map((item, index) => (
-            <div className="ItemCard" onClick={() => {}}>
+            <div className="ItemCard" onClick={this.handleClick}>
               <img className="item__image" src={item.gallery[0]} />
 
               <div className="details">
