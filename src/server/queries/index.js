@@ -49,7 +49,7 @@ export const GET_PRODUCTS_BY_ID = gql`
       inStock
       gallery
       description
-      atttributes {
+      attributes {
         id
         name
         type

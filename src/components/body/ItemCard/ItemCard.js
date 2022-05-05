@@ -14,8 +14,8 @@ class ItemCard extends PureComponent {
   }
 
   handleClick() {
-    alert("Page routing");
-    <Link to="details" />;
+    // alert("Page routing");
+    return <Link to="/details">Hello mate</Link>;
   }
 
   render() {
@@ -29,9 +29,17 @@ class ItemCard extends PureComponent {
           // Getting all the infomation about products
           const products = data.category.products;
           console.log(products);
+          console.log("amount", products[0].prices[0].amount);
 
           return products.map((item, index) => (
-            <div className="ItemCard" onClick={this.handleClick}>
+            <Link
+              className="ItemCard"
+              to={`/details/${item.id}`}
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
               <img className="item__image" src={item.gallery[0]} />
 
               <div className="details">
@@ -46,7 +54,7 @@ class ItemCard extends PureComponent {
                   <div className="amount">{item.prices.amount}</div>
                 </p>
               </div>
-            </div>
+            </Link>
           ));
         }}
       </Query>

@@ -1,10 +1,11 @@
 .App {
     /* text-align: center; */
     overflow: hidden;
+    margin: 0px 50px;
 
 }
 
-.App h1 {
+/* .App h1 {
     text-align: center;
 
-}
+} */

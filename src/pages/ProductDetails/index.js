@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import Details from "../../components/body/layout/Details/Details";
 import Header from "../../components/header/Header";
 
 export class ProductDetails extends PureComponent {
@@ -12,6 +13,7 @@ export class ProductDetails extends PureComponent {
       <>
         {/* Product Details Page */}
         <Header />
+        <Details />
         <div></div>
       </>
     );
