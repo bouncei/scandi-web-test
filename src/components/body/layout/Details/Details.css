@@ -76,8 +76,10 @@
 
 
 .price__tag {
-    padding-top: 17px;
+    padding-top: 25px;
     display: flex;
     align-items: center;
+    font-size: large;
+    font-weight: 500;
 
 }

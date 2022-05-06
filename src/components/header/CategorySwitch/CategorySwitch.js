@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 // import { categoriesSwitcher } from "../../../Redux/actions";
 
 export class CategorySwitch extends PureComponent {
+  handleClick = () => {};
   render() {
     return (
       <Query query={CATEGORY_NAMES}>
@@ -14,13 +15,23 @@ export class CategorySwitch extends PureComponent {
           if (error) return console.log(error);
           if (data.categories === undefined) return null;
 
+          // window.location.reload(false);
+
           return data.categories.map((item, index) => (
             <Link
               to={`/${item.name}`}
-              key={item.name}
+              key={index}
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              <div className="CategoryItem">{item.name}</div>
+              <div
+                className="CategoryItem"
+                // onClick={() => {
+                //   window.location.reload(false);
+                // }}
+                // onClick={this.handleClick}
+              >
+                {item.name}
+              </div>
             </Link>
           ));
         }}

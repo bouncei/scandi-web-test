@@ -22,11 +22,14 @@ export class Header extends PureComponent {
       isOpen: false,
     };
   }
+  refreshPage = () => {
+    window.location.reload(false);
+  };
 
   optionClickHandler = (symbol) => {
     this.setState({ symbol, isOpen: false });
     localStorage.setItem("symbol", symbol);
-    console.log("Selected Symbol", localStorage.getItem("symbol"));
+    // console.log("Selected Symbol", localStorage.getItem("symbol"));
   };
 
   render() {
@@ -37,7 +40,7 @@ export class Header extends PureComponent {
         {/* Left side
           Create a class component for switching categories  
         */}
-        <div className="headerItems">
+        <div className="headerItems" onClick={this.refreshPage}>
           <CategorySwitch />
         </div>
 

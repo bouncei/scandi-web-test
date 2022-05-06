@@ -15,7 +15,10 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/all" element={<HomeComp />}></Route>
+            <Route path="/:id" element={<HomeComp />}></Route>
+            <Route path="/tech" element={<HomeComp />}></Route>
+            <Route path="/clothes" element={<HomeComp />}></Route>
+
             <Route index element={<HomeComp />}></Route>
             <Route path="/details/:id" element={<ProductDetails />}></Route>
           </Routes>

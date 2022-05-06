@@ -1,7 +1,10 @@
 import React, { PureComponent } from "react";
 import "./ItemCard.css";
 
-import { ALL_CATEGORY_SECTION } from "../../../server/queries";
+import {
+  ALL_CATEGORY_SECTION,
+  GET_PRODUCTS_BY_CATEGORY,
+} from "../../../server/queries";
 import { Query } from "@apollo/client/react/components";
 import { Link } from "react-router-dom";
 import Prices from "../../header/Prices/Prices";
@@ -35,10 +38,17 @@ class ItemCard extends PureComponent {
   };
 
   render() {
-    // console.log("another one", this.state.symbol);
-    console.log("arry of amount", this.state.arr__amount);
+    // // console.log("another one", this.state.symbol);
+    // if (window.location.pathname === "/clothes" || "/tech") {
+    //   window.location.reload(false);
+    // }
+    console.log("path", window.location.pathname.slice(1));
     return (
-      <Query query={ALL_CATEGORY_SECTION}>
+      <Query
+        query={GET_PRODUCTS_BY_CATEGORY}
+        variables={{ input: { title: window.location.pathname.slice(1) } }}
+        fetchPolicy="network-only"
+      >
         {({ loading, error, data }) => {
           if (loading) return null;
           if (error) return console.log(error);
