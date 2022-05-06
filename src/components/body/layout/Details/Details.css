@@ -75,6 +75,9 @@
 
 
 
-.symbol__amount {
+.price__tag {
     padding-top: 17px;
+    display: flex;
+    align-items: center;
+
 }

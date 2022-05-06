@@ -4,7 +4,6 @@ import "./Details.css";
 import { GET_PRODUCTS_BY_ID } from "../../../../server/queries";
 import cartImg from "../../../../assets/cart.png";
 import Attributes from "../../Attributes/Attributes";
-import Home from "../Home/Home";
 
 export class Details extends PureComponent {
   constructor(props) {
@@ -18,6 +17,13 @@ export class Details extends PureComponent {
 
   getPriceByCurrency = (prices) => {
     if (prices && localStorage.getItem("symbol")) {
+      let price = prices.find(
+        (p) => p.currency.symbol === localStorage.getItem("symbol")
+      );
+      return price;
+    } else {
+      let price = prices.find((p) => p.currency.symbol === "$");
+      return price;
     }
   };
 
@@ -39,9 +45,8 @@ export class Details extends PureComponent {
           if (data.product === undefined) return null;
 
           const product = data.product;
-          //   const price = ...
 
-          console.log("product", product);
+          const price = this.getPriceByCurrency(product.prices);
 
           return (
             <div className="detailed_details">
@@ -81,10 +86,9 @@ export class Details extends PureComponent {
                   <div className="label">PRICE:</div>
 
                   {/* I've to Implement a new class component as I did for Attribute above */}
-                  <div className="price_tag">
-                    <div className="symbol__amount">
-                      {localStorage.getItem("symbol")}
-                    </div>
+                  <div className="price__tag">
+                    <div className="symbol">{price.currency.symbol}</div>
+                    <div className="amount">{price.amount}</div>
                   </div>
                 </div>
 

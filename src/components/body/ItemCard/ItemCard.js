@@ -1,10 +1,10 @@
 import React, { PureComponent } from "react";
 import "./ItemCard.css";
-import pixel from "../../../assets/pi.jpg";
+
 import { ALL_CATEGORY_SECTION } from "../../../server/queries";
 import { Query } from "@apollo/client/react/components";
 import { Link } from "react-router-dom";
-import { throwServerError } from "@apollo/client";
+import Prices from "../../header/Prices/Prices";
 
 class ItemCard extends PureComponent {
   constructor(props) {
@@ -19,8 +19,24 @@ class ItemCard extends PureComponent {
     this.setState({ symbol: localStorage.getItem("symbol") });
   }
 
+  getPriceByCurrency = (prices) => {
+    if (prices && localStorage.getItem("symobol")) {
+      let price = prices.find(
+        (p) => p.currency.symbol == localStorage.getItem("symbol")
+      );
+      console.log("price", price);
+      return price;
+    } else {
+      let price = prices.find((p) => p.currency.symbol === "$");
+      console.log("price", price);
+
+      return price;
+    }
+  };
+
   render() {
-    console.log("another one", this.state.symbol);
+    // console.log("another one", this.state.symbol);
+    console.log("arry of amount", this.state.arr__amount);
     return (
       <Query query={ALL_CATEGORY_SECTION}>
         {({ loading, error, data }) => {
@@ -35,6 +51,7 @@ class ItemCard extends PureComponent {
 
           return products.map((item, index) => (
             <Link
+              key={index}
               className="ItemCard"
               to={`/details/${item.id}`}
               style={{
@@ -47,19 +64,10 @@ class ItemCard extends PureComponent {
               <div className="details">
                 <p className="item__name">{item.name}</p>
                 <div className="price">
-                  <p className="symbol">{this.state.symbol}</p>
-                  <p className="amount">
-                    {item.prices.map((i, index) => {
-                      {
-                        localStorage.getItem("symbol") === i.currency.symbol ? (
-                          <p>{i.amount}</p>
-                        ) : (
-                          console.log("Not yet boss")
-                        );
-                      }
-                    })}
-                  </p>
-                  <p className="amount"> </p>
+                  <Prices
+                    getPrice={() => this.getPriceByCurrency(item.prices)}
+                    symbol={this.state.symbol}
+                  />
                 </div>
               </div>
             </Link>

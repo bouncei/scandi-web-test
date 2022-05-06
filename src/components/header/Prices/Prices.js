@@ -3,7 +3,17 @@ import "./Prices.css";
 
 export class Prices extends PureComponent {
   render() {
-    return <div>Prices</div>;
+    const { getPrice, symbol } = this.props;
+
+    let price = getPrice();
+
+    console.log(price);
+    return (
+      <div className="price">
+        <p className="symbol">{symbol}</p>
+        <p className="amount">{price.amount}</p>
+      </div>
+    );
   }
 }
 
