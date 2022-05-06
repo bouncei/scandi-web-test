@@ -7,6 +7,7 @@ import ProductDetails from "./pages/ProductDetails";
 // React-Router-Config
 import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CartPage from "./pages/CartPage";
 
 class App extends Component {
   render() {
@@ -16,9 +17,7 @@ class App extends Component {
         <BrowserRouter>
           <Routes>
             <Route path="/:id" element={<HomeComp />}></Route>
-            <Route path="/tech" element={<HomeComp />}></Route>
-            <Route path="/clothes" element={<HomeComp />}></Route>
-
+            <Route path="/cart" element={<CartPage />}></Route>
             <Route index element={<HomeComp />}></Route>
             <Route path="/details/:id" element={<ProductDetails />}></Route>
           </Routes>
