@@ -13,9 +13,16 @@ export class Currency extends PureComponent {
           if (data.currencies === undefined) return null;
 
           return data.currencies.map((item, index) => (
-            <div className="currency__details" key={index}>
+            <div
+              className="currency__details"
+              key={index}
+              onClick={() => {
+                this.props.value(item.symbol);
+                window.location.reload(false);
+              }}
+            >
               <div className="symbol">{item.symbol}</div>
-              <div className="label">{item.label}</div>
+              <div className="label__">{item.label}</div>
             </div>
           ));
         }}

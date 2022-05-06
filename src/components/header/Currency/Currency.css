@@ -1,13 +1,15 @@
 .currency__details {
     display: flex;
+    /* align-items: center; */
     align-items: center;
     justify-content: space-between;
 
 }
 
 .symbol,
-.label {
+.label__ {
     padding: 5px;
+    font-weight: 500;
 }
 
 

@@ -18,6 +18,19 @@
 
 .details {
     text-align: start;
-    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* justify-content: space-; */
+}
 
+.item__name {
+    font-size: 1.4rem;
+    font-weight: 220;
+
+}
+
+.price {
+    margin-top: -30px;
+    font-weight: 350;
 }

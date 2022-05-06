@@ -20,8 +20,6 @@ class App extends Component {
             <Route path="/details/:id" element={<ProductDetails />}></Route>
           </Routes>
         </BrowserRouter>
-
-        <h1>This is my ScandiWeb Project</h1>
       </div>
     );
   }

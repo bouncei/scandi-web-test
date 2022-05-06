@@ -17,8 +17,17 @@ export class Header extends PureComponent {
     this.state = {
       toggleCurr: false,
       toggleCart: false,
+
+      symbol: "$",
+      isOpen: false,
     };
   }
+
+  optionClickHandler = (symbol) => {
+    this.setState({ symbol, isOpen: false });
+    localStorage.setItem("symbol", symbol);
+    console.log("Selected Symbol", localStorage.getItem("symbol"));
+  };
 
   render() {
     return (
@@ -53,7 +62,7 @@ export class Header extends PureComponent {
                 this.state.toggleCurr && "active-menu"
               }`}
             >
-              <Currency />
+              <Currency value={this.optionClickHandler} />
             </div>
           </div>
 

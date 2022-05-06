@@ -1,10 +1,3 @@
-.label {
-    margin-top: 9px;
-    margin-bottom: -17px;
-    font-weight: 700;
-    font-size: large;
-}
-
 .label__sizes {
     display: flex;
     /* align-items: center; */

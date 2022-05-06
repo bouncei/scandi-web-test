@@ -1,6 +1,6 @@
-.details {
+.detailed_details {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-between;
 }
 
@@ -27,14 +27,17 @@
     height: 9vh;
     object-fit: contain;
     padding-bottom: .8rem;
+    cursor: pointer;
 }
 
 
 
 .LargeImg {
     height: 65vh;
+    width: 40vw;
     object-fit: contain;
     padding: 0px 30px;
+
 
 }
 
@@ -68,4 +71,10 @@
     cursor: pointer;
     transition: all 300ms ease-in-out;
     background-color: #499c34;
+}
+
+
+
+.symbol__amount {
+    padding-top: 17px;
 }

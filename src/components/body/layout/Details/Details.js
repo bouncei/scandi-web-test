@@ -16,7 +16,13 @@ export class Details extends PureComponent {
     };
   }
 
+  getPriceByCurrency = (prices) => {
+    if (prices && localStorage.getItem("symbol")) {
+    }
+  };
+
   setMainPic = (photo) => {
+    // alert("accepted image");
     this.setState({ mainPic: photo });
   };
 
@@ -38,15 +44,25 @@ export class Details extends PureComponent {
           console.log("product", product);
 
           return (
-            <div className="details">
+            <div className="detailed_details">
               {/* Images Section */}
               <div className="images__section">
                 <div className="SmallImg">
                   {product.gallery.map((item, index) => (
-                    <img className="iSmall" src={item} />
+                    <img
+                      key={index}
+                      className="iSmall"
+                      onClick={() => this.setMainPic(item)}
+                      src={item}
+                    />
                   ))}
                 </div>
-                <img src={product.gallery[0]} className="LargeImg" />
+                <img
+                  src={
+                    this.state.mainPic ? this.state.mainPic : product.gallery[0]
+                  }
+                  className="LargeImg"
+                />
               </div>
 
               {/* Cart Details Section */}
@@ -61,16 +77,22 @@ export class Details extends PureComponent {
                   ))}
                 </div>
 
-                <div className="price">
+                <div className="details_price">
                   <div className="label">PRICE:</div>
 
                   {/* I've to Implement a new class component as I did for Attribute above */}
-                  <div className="amount">{product.prices.amount}</div>
+                  <div className="price_tag">
+                    <div className="symbol__amount">
+                      {localStorage.getItem("symbol")}
+                    </div>
+                  </div>
                 </div>
 
                 <div className="add_to_cart">ADD TO CART</div>
 
-                <div className="descripton">{product.description}</div>
+                <div
+                  dangerouslySetInnerHTML={{ __html: product.description }}
+                ></div>
               </div>
             </div>
           );
