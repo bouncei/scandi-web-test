@@ -9,6 +9,7 @@ export class ProductDetails extends PureComponent {
   }
 
   render() {
+    const { onAdd, cartItems } = thos.props;
     return (
       <>
         {/* Product Details Page */}

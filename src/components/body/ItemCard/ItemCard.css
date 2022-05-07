@@ -1,10 +1,23 @@
 .ItemCard {
     margin: 20px 30px;
+
     /* padding: 30px; */
     margin: auto;
     text-align: start;
-    cursor: pointer;
+    /* cursor: pointer; */
+    padding: 19px 8px;
 
+}
+
+.item_container {
+    padding: 0px 20px;
+}
+
+.ItemCard:hover {
+    transition: all 300ms ease-in-out;
+
+    transform: scale(1.05);
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
 
 .item__image {

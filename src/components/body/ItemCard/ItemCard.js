@@ -27,22 +27,15 @@ class ItemCard extends PureComponent {
       let price = prices.find(
         (p) => p.currency.symbol == localStorage.getItem("symbol")
       );
-      console.log("price", price);
       return price;
     } else {
       let price = prices.find((p) => p.currency.symbol === "$");
-      console.log("price", price);
 
       return price;
     }
   };
 
   render() {
-    // // console.log("another one", this.state.symbol);
-    // if (window.location.pathname === "/clothes" || "/tech") {
-    //   window.location.reload(false);
-    // }
-    console.log("path", window.location.pathname.slice(1));
     return (
       <Query
         query={GET_PRODUCTS_BY_CATEGORY}
@@ -56,8 +49,6 @@ class ItemCard extends PureComponent {
 
           // Getting all the infomation about products
           const products = data.category.products;
-          console.log(products);
-          console.log("array boss", products[0].prices[0]);
 
           return products.map((item, index) => (
             <Link
@@ -69,15 +60,17 @@ class ItemCard extends PureComponent {
                 color: "inherit",
               }}
             >
-              <img className="item__image" src={item.gallery[0]} />
+              <div className="item_container">
+                <img className="item__image" src={item.gallery[0]} />
 
-              <div className="details">
-                <p className="item__name">{item.name}</p>
-                <div className="price">
-                  <Prices
-                    getPrice={() => this.getPriceByCurrency(item.prices)}
-                    symbol={this.state.symbol}
-                  />
+                <div className="details">
+                  <p className="item__name">{item.name}</p>
+                  <div className="price">
+                    <Prices
+                      getPrice={() => this.getPriceByCurrency(item.prices)}
+                      symbol={this.state.symbol}
+                    />
+                  </div>
                 </div>
               </div>
             </Link>

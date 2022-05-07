@@ -7,7 +7,6 @@ export class Prices extends PureComponent {
 
     let price = getPrice();
 
-    console.log(price);
     return (
       <div className="price">
         <p className="symbol">{symbol}</p>
