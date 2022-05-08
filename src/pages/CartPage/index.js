@@ -8,7 +8,7 @@ export class CartPage extends PureComponent {
     return (
       <>
         <Header />
-        <Cart />
+        <Cart cartItems={cartItems} onAdd={onAdd} />
       </>
     );
   }

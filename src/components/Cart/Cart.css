@@ -1,0 +1,17 @@
+.cart_item,
+.images_of_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.activity {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.activity_button {
+    border: 1px solid black;
+    padding: 10px;
+}

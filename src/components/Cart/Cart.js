@@ -3,7 +3,7 @@ import "./Cart.css";
 
 export class Cart extends PureComponent {
   render() {
-    const { cartItems } = this.props;
+    const { cartItems, onAdd } = this.props;
 
     console.log("passed props", cartItems);
     return (
@@ -12,6 +12,30 @@ export class Cart extends PureComponent {
         <div>
           {cartItems.length === 0 && <p className="empty">Cart Is Empty</p>}
         </div>
+
+        {cartItems.map((item) => (
+          <div className="cart_item" key={item.id}>
+            {/* Left Hand side Details */}
+            <div className="details_of_item">
+              <h2 className="product__name">{item.name}</h2>
+              <p className="product__brand">{item.brand}</p>
+            </div>
+
+            <div className="images_of_item">
+              <div className="activity">
+                <div className="activity_button">+</div>
+
+                <div className="added_items">
+                  <span></span>
+                </div>
+
+                <div className="activity_button">-</div>
+              </div>
+              {/* Add Image Slider */}
+              <img />
+            </div>
+          </div>
+        ))}
       </div>
     );
   }

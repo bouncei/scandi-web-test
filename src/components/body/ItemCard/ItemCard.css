@@ -20,12 +20,36 @@
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
 
+.imgContainer {
+    position: relative;
+}
+
+.stock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* opacity: 0.5; */
+}
+
 .item__image {
     height: 350px;
     width: 400px;
     /* display: block; */
     object-fit: contain;
     /* padding: 20px; */
+
+}
+
+.stockImg {
+    opacity: 0.5;
+    pointer-events: none !important;
+    cursor: unset !important;
+}
+
+.disable {
+    pointer-events: none !important;
+    cursor: unset !important;
 
 }
 
