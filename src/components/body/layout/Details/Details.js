@@ -33,6 +33,7 @@ export class Details extends PureComponent {
   };
 
   render() {
+    const { onAdd, cartItems } = this.props;
     return (
       <Query
         query={GET_PRODUCTS_BY_ID}
@@ -92,7 +93,15 @@ export class Details extends PureComponent {
                   </div>
                 </div>
 
-                <div className="add_to_cart">ADD TO CART</div>
+                <div
+                  onClick={() => {
+                    onAdd(product);
+                    console.log(cartItems);
+                  }}
+                  className="add_to_cart"
+                >
+                  ADD TO CART
+                </div>
 
                 <div
                   dangerouslySetInnerHTML={{ __html: product.description }}

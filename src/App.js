@@ -14,7 +14,7 @@ class App extends PureComponent {
     super(props);
 
     this.state = {
-      cartItems: new Array(),
+      cartItems: [],
     };
   }
 

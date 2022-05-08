@@ -3,7 +3,7 @@ import "./Cart.css";
 
 export class Cart extends PureComponent {
   render() {
-    const { cartItems, onAdd } = this.props;
+    const { cartItems, onAdd, onRemove } = this.props;
 
     console.log("passed props", cartItems);
     return (
@@ -23,13 +23,17 @@ export class Cart extends PureComponent {
 
             <div className="images_of_item">
               <div className="activity">
-                <div className="activity_button">+</div>
-
-                <div className="added_items">
-                  <span></span>
+                <div onClick={() => onAdd(item)} className="activity_button">
+                  +
                 </div>
 
-                <div className="activity_button">-</div>
+                <div className="qty">
+                  <span>{item.qty}</span>
+                </div>
+
+                <div className="activity_button" onClick={() => onRemove(item)}>
+                  -
+                </div>
               </div>
               {/* Add Image Slider */}
               <img />
