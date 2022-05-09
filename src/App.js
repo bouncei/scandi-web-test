@@ -14,7 +14,7 @@ class App extends PureComponent {
     super(props);
 
     this.state = {
-      cartItems: [],
+      cartItems: new Array(),
     };
   }
 
@@ -33,7 +33,10 @@ class App extends PureComponent {
         cartItems: [...this.state.cartItems, { ...product, qty: 1 }],
       });
     }
+
+    // localStorage.setItem("cart", JSON.stringify(this.state.cartItems));
   };
+
   render() {
     return (
       <div className="App">

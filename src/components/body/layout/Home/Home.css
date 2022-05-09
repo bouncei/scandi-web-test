@@ -5,11 +5,14 @@
 
 
 .category__title {
-    text-align: left;
-    font-weight: 280;
-    font-size: xx-large;
 
 
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 160%;
+    text-transform: capitalize;
 }
 
 .products {

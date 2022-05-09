@@ -8,24 +8,14 @@ export class ParentComp extends Component {
     super(props);
 
     this.state = {
-      name: "Boss",
-      title: "Category Name",
+      title: "all",
     };
   }
 
-  // componentDidMount() {
-  //   setInterval(() => {
-  //     this.setState = {
-  //       name: "Bouncey",
-  //     };
-  //   }, 2000);
-  // }
-
   render() {
-    // console.log();
     return (
       <>
-        {/* ParentComp*/}
+        {/* Parent Home Component*/}
         <Header />
         <div className="mx">
           <Home title={this.state.title} />

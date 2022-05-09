@@ -9,10 +9,24 @@ import ItemCard from "../../ItemCard/ItemCard";
 // `;
 
 export class Home extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      categoryName: "",
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ categoryName: window.location.pathname.slice(1) });
+  }
+
   render() {
     return (
       <div className="layout">
-        <h2 className="category__title">{this.props.title}</h2>
+        <h2 className="category__title">
+          {this.state.categoryName ? this.state.categoryName : this.props.title}
+        </h2>
 
         {/* Array of products in CardComponents using .map() */}
         <div className="products">

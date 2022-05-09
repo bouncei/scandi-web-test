@@ -23,10 +23,11 @@ class ItemCard extends PureComponent {
   }
 
   getPriceByCurrency = (prices) => {
-    if (prices && localStorage.getItem("symobol")) {
+    if (prices && localStorage.getItem("symbol")) {
       let price = prices.find(
-        (p) => p.currency.symbol == localStorage.getItem("symbol")
+        (p) => p.currency.symbol === localStorage.getItem("symbol")
       );
+
       return price;
     } else {
       let price = prices.find((p) => p.currency.symbol === "$");

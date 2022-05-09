@@ -49,6 +49,8 @@ export class Details extends PureComponent {
 
           const price = this.getPriceByCurrency(product.prices);
 
+          console.log("Cart Items", cartItems);
+
           return (
             <div className="detailed_details">
               {/* Images Section */}
@@ -56,7 +58,7 @@ export class Details extends PureComponent {
                 <div className="SmallImg">
                   {product.gallery.map((item, index) => (
                     <img
-                      key={index}
+                      key={item.id}
                       className="iSmall"
                       onClick={() => this.setMainPic(item)}
                       src={item}
@@ -96,7 +98,6 @@ export class Details extends PureComponent {
                 <div
                   onClick={() => {
                     onAdd(product);
-                    console.log(cartItems);
                   }}
                   className="add_to_cart"
                 >

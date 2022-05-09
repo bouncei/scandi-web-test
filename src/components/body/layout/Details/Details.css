@@ -73,6 +73,11 @@
     background-color: #499c34;
 }
 
+.add_to_cart:hover {
+    background-color: #76af68;
+    color: #222;
+
+}
 
 
 .price__tag {
