@@ -8,6 +8,7 @@ import {
 import { Query } from "@apollo/client/react/components";
 import { Link } from "react-router-dom";
 import Prices from "../../header/Prices/Prices";
+import { ReactComponent as CartIcon } from "../../../pics/green-cart-icon.svg";
 
 class ItemCard extends PureComponent {
   constructor(props) {
@@ -34,6 +35,10 @@ class ItemCard extends PureComponent {
 
       return price;
     }
+  };
+
+  addToCart = (product) => {
+    // Define an add to cart funtionality to the green-cart button
   };
 
   render() {
@@ -73,6 +78,10 @@ class ItemCard extends PureComponent {
                     }}
                   />
                   {!item.inStock && <div className="stock">OUT OF STOCK</div>}
+                </div>
+
+                <div className="green-cart">
+                  <CartIcon onClick={() => this.addToCart()} />
                 </div>
 
                 <div className="details">

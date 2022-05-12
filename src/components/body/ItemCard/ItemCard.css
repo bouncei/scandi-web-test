@@ -32,6 +32,20 @@
     /* opacity: 0.5; */
 }
 
+.green-cart {
+    display: none;
+    position: absolute;
+    right: 35px;
+    bottom: 66px;
+    cursor: pointer;
+
+}
+
+.item_container:hover>.green-cart {
+
+    display: block;
+}
+
 .item__image {
     height: 350px;
     width: 400px;

@@ -4,12 +4,10 @@ import down from "../../assets/down.svg";
 // import an icon for direction-up too
 import { PureComponent } from "react";
 import ToggleCart from "./toggleCart/ToggleCart";
-// import CartegorySwitch from "./CategorySwitch/CartegorySwitch";
-
-import { CATEGORY_NAMES } from "../../server/queries";
-import { Query } from "@apollo/client/react/components";
 import CategorySwitch from "./CategorySwitch/CategorySwitch";
 import Currency from "./Currency/Currency";
+
+import { ReactComponent as HeaderLogo } from "../../pics/header-logo.svg";
 
 export class Header extends PureComponent {
   constructor(props) {
@@ -43,6 +41,9 @@ export class Header extends PureComponent {
         <div className="headerItems" onClick={this.refreshPage}>
           <CategorySwitch />
         </div>
+
+        {/* Centered Element */}
+        <HeaderLogo />
 
         {/*Right side*/}
         <div className="endItems">
