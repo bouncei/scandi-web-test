@@ -41,9 +41,16 @@
 
 }
 
+
 .item_container:hover>.green-cart {
 
     display: block;
+}
+
+.green-cart:hover {
+    transition: all 300ms ease-in-out;
+    transform: scale(1.08);
+
 }
 
 .item__image {

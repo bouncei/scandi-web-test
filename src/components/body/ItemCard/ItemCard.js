@@ -39,6 +39,7 @@ class ItemCard extends PureComponent {
 
   addToCart = (product) => {
     // Define an add to cart funtionality to the green-cart button
+    console.log("Add to cart function", product);
   };
 
   render() {
@@ -81,7 +82,7 @@ class ItemCard extends PureComponent {
                 </div>
 
                 <div className="green-cart">
-                  <CartIcon onClick={() => this.addToCart()} />
+                  <CartIcon onClick={() => this.addToCart(item)} />
                 </div>
 
                 <div className="details">
