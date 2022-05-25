@@ -45,6 +45,7 @@ class ItemCard extends PureComponent {
   render() {
     return (
       <Query
+        key={"yes"}
         query={GET_PRODUCTS_BY_CATEGORY}
         variables={{ input: { title: window.location.pathname.slice(1) } }}
         fetchPolicy="network-only"

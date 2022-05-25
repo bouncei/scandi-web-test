@@ -9,7 +9,7 @@ export class CategorySwitch extends PureComponent {
   handleClick = () => {};
   render() {
     return (
-      <Query query={CATEGORY_NAMES}>
+      <Query key={"key"} query={CATEGORY_NAMES}>
         {({ loading, error, data }) => {
           if (loading) return null;
           if (error) return console.log(error);

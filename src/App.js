@@ -19,23 +19,23 @@ class App extends PureComponent {
   }
 
   // On Add Functionality to Cart
-  onAdd = (product) => {
-    const exist = this.state.cartItems.find((p) => p.id === product.id);
+  // onAdd = (product) => {
+  //   const exist = this.state.cartItems.find((p) => p.id === product.id);
 
-    if (exist) {
-      this.setState({
-        cartItems: this.state.cartItems.map((p) =>
-          p.id === product.id ? { ...exist, qty: exist.qty + 1 } : p
-        ),
-      });
-    } else {
-      this.setState({
-        cartItems: [...this.state.cartItems, { ...product, qty: 1 }],
-      });
-    }
+  //   if (exist) {
+  //     this.setState({
+  //       cartItems: this.state.cartItems.map((p) =>
+  //         p.id === product.id ? { ...exist, qty: exist.qty + 1 } : p
+  //       ),
+  //     });
+  //   } else {
+  //     this.setState({
+  //       cartItems: [...this.state.cartItems, { ...product, qty: 1 }],
+  //     });
+  //   }
 
-    // localStorage.setItem("cart", JSON.stringify(this.state.cartItems));
-  };
+  //   // localStorage.setItem("cart", JSON.stringify(this.state.cartItems));
+  // };
 
   render() {
     return (
@@ -46,7 +46,10 @@ class App extends PureComponent {
             <Route
               path="/cart"
               element={
-                <CartPage onAdd={this.onAdd} cartItems={this.state.cartItems} />
+                <CartPage
+                // onAdd={this.onAdd}
+                // cartItems={this.state.cartItems}
+                />
               }
             ></Route>
             <Route index element={<HomeComp />}></Route>
@@ -54,8 +57,8 @@ class App extends PureComponent {
               path="/details/:id"
               element={
                 <ProductDetails
-                  onAdd={this.onAdd}
-                  cartItems={this.state.cartItems}
+                // onAdd={this.onAdd}
+                // cartItems={this.state.cartItems}
                 />
               }
             ></Route>
