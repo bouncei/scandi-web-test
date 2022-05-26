@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
 import "./Cart.css";
-
+import { addProductToCart } from "../../Redux/shop/actions";
+import { removeProductFromCart } from "../../Redux/shop/actions";
+import { checkout } from "../../Redux/shop/actions";
 export class Cart extends PureComponent {
   render() {
     // const { cartItems, onAdd, onRemove } = this.props;
@@ -57,4 +59,20 @@ export class Cart extends PureComponent {
   }
 }
 
-export default Cart;
+const mapStateToProps = (state) => {
+  return {
+    symbol: state.symbol,
+    cart: state.cart,
+    totalQty: state.totalQty,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  removeProductFromCart: (product) => dispatch(removeProductFromCart(product)),
+  addProductToCart: (product) => dispatch(addProductToCart(product)),
+  checkout: () => dispatch(checkout()),
+});
+
+const functionFromConnect = connect(mapStateToProps, mapDispatchToProps);
+
+export default functionFromConnect(Cart);

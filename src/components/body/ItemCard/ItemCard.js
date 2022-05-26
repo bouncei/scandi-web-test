@@ -3,10 +3,7 @@ import "./ItemCard.css";
 import { connect } from "react-redux";
 import { addProductToCart } from "../../../Redux/shop/actions";
 
-import {
-  ALL_CATEGORY_SECTION,
-  GET_PRODUCTS_BY_CATEGORY,
-} from "../../../server/queries";
+import { GET_PRODUCTS_BY_CATEGORY } from "../../../server/queries";
 import { Query } from "@apollo/client/react/components";
 import { Link } from "react-router-dom";
 import Prices from "../../header/Prices/Prices";

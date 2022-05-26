@@ -16,6 +16,7 @@ export default function reducer(state = initialState, action) {
       const { product } = action.payload;
       const item = state.cart.find((cartItem) => cartItem.id === product.id);
       let newState = {};
+      // If Item is alreadt available in the cart
       if (item) {
         newState = {
           ...state,
@@ -35,6 +36,7 @@ export default function reducer(state = initialState, action) {
         localStorage.setItem("totalQty", JSON.stringify(newState.totalQty));
         return newState;
       }
+      // Else New Cart Item
       newState = {
         ...state,
         cart: [...state.cart, product],
@@ -42,9 +44,11 @@ export default function reducer(state = initialState, action) {
           return acc + item.qty;
         }, 1),
       };
+      //   Setting state to localStorage
       localStorage.setItem("cart", JSON.stringify(newState.cart));
       localStorage.setItem("totalQty", JSON.stringify(newState.totalQty));
       return newState;
+
     case "REMOVE_PRODUCT_FROM_CART":
       const { productToRemove } = action.payload;
       const itemToRemove = state.cart.find(

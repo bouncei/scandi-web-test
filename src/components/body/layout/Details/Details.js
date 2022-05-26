@@ -2,8 +2,10 @@ import { Query } from "@apollo/client/react/components";
 import React, { PureComponent } from "react";
 import "./Details.css";
 import { GET_PRODUCTS_BY_ID } from "../../../../server/queries";
-import cartImg from "../../../../assets/cart.png";
+// import cartImg from "../../../../assets/cart.png";
 import Attributes from "../../Attributes/Attributes";
+import { connect } from "react-redux";
+import { addProductToCart } from "../../../../Redux/shop/actions";
 
 export class Details extends PureComponent {
   constructor(props) {
@@ -105,6 +107,7 @@ export class Details extends PureComponent {
                 </div>
 
                 <div
+                  className="description"
                   dangerouslySetInnerHTML={{ __html: product.description }}
                 ></div>
               </div>
@@ -116,4 +119,16 @@ export class Details extends PureComponent {
   }
 }
 
-export default Details;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.shop.cart,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  addProductToCart: (product) => dispatch(addProductToCart(product)),
+});
+
+const functionFromConnect = connect(mapStateToProps, mapDispatchToProps);
+
+export default functionFromConnect(Details);
