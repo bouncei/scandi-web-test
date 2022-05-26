@@ -1,5 +1,7 @@
 import React, { PureComponent } from "react";
 import "./ItemCard.css";
+import { connect } from "react-redux";
+import { addProductToCart } from "../../../Redux/shop/actions";
 
 import {
   ALL_CATEGORY_SECTION,
@@ -19,6 +21,40 @@ class ItemCard extends PureComponent {
     };
   }
 
+  addToCart = (product) => {
+    let updatedProduct = {};
+    if (product.attributes.length === 0) {
+      updatedProduct = {
+        ...product,
+        qty: 1,
+        id: `${product.id} `,
+      };
+      this.props.addProductToCart(updatedProduct);
+    } else {
+      const updatedAttributes = product.attributes.map((a) => {
+        return {
+          ...a,
+          items: a.items.map((item, index) => {
+            return index === 0
+              ? { ...item, selected: true }
+              : { ...item, selected: false };
+          }),
+        };
+      });
+      const selectedAttribute = updatedAttributes.map((a) =>
+        a.items.find((i) => i.selected === true)
+      );
+      updatedProduct = {
+        ...product,
+        attributes: updatedAttributes,
+        qty: 1,
+        id: `${product.id} ${selectedAttribute.map((i) => i.id).join(" ")}`,
+      };
+      this.props.addProductToCart(updatedProduct);
+    }
+    console.log("Add to cart function", product);
+  };
+
   componentDidMount() {
     this.setState({ symbol: localStorage.getItem("symbol") });
   }
@@ -35,11 +71,6 @@ class ItemCard extends PureComponent {
 
       return price;
     }
-  };
-
-  addToCart = (product) => {
-    // Define an add to cart funtionality to the green-cart button
-    console.log("Add to cart function", product);
   };
 
   render() {
@@ -104,4 +135,16 @@ class ItemCard extends PureComponent {
   }
 }
 
-export default ItemCard;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.shop.cart,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  addProductToCart: (product) => dispatch(addProductToCart(product)),
+});
+
+const functionFromConnect = connect(mapStateToProps, mapDispatchToProps);
+
+export default functionFromConnect(ItemCard);

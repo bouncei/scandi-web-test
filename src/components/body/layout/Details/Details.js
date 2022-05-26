@@ -36,7 +36,6 @@ export class Details extends PureComponent {
     const { onAdd, cartItems } = this.props;
     return (
       <Query
-        key={"key"}
         query={GET_PRODUCTS_BY_ID}
         variables={{ id: window.location.pathname.slice(9) }}
         fetchPolicy="network-only"
