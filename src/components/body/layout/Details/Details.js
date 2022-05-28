@@ -34,8 +34,33 @@ export class Details extends PureComponent {
     this.setState({ mainPic: photo });
   };
 
+  handleOnChange = ({ attr }) => {
+    const attributes = this.state.attributes;
+
+    const nextState = attributes.map((item) => {
+      if (item.id !== attr.name) return item;
+      return {
+        ...item,
+        items: item.items.map((i) => {
+          const checked = i.value === attr.value;
+          return {
+            ...i,
+            selected: checked,
+          };
+        }),
+      };
+    });
+
+    this.setState({
+      attributes: nextState,
+      warningMessage: "",
+    });
+
+    console.log(this.state.attributes);
+  };
+
   render() {
-    const { onAdd, cartItems } = this.props;
+    // const { onAdd, cartItems } = this.props;
     return (
       <Query
         query={GET_PRODUCTS_BY_ID}
@@ -51,7 +76,7 @@ export class Details extends PureComponent {
 
           const price = this.getPriceByCurrency(product.prices);
 
-          console.log("Cart Items", cartItems);
+          // console.log("Cart Items", cartItems);
 
           return (
             <div className="detailed_details">
@@ -83,7 +108,11 @@ export class Details extends PureComponent {
 
                 <div className="attributes">
                   {product.attributes.map((item, index) => (
-                    <Attributes attributes={item} />
+                    <Attributes
+                      attributes={item}
+                      product={product}
+                      func={this.handleOnChange}
+                    />
                   ))}
                 </div>
 

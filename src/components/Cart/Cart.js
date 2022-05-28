@@ -3,6 +3,7 @@ import "./Cart.css";
 import { addProductToCart } from "../../Redux/shop/actions";
 import { removeProductFromCart } from "../../Redux/shop/actions";
 import { checkout } from "../../Redux/shop/actions";
+import { connect } from "react-redux";
 export class Cart extends PureComponent {
   render() {
     // const { cartItems, onAdd, onRemove } = this.props;

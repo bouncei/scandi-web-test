@@ -12,22 +12,24 @@ export class Attributes extends PureComponent {
     };
   }
 
-  //   componentDidMount() {}
-
   render() {
-    // console.log("HEHEHE", this.state.attributes);
+    console.log("HEHEHE", this.state.attributes);
     return (
       <div className="attributes">
         <div className="label__sizes">
-          <div className="label">
+          <div className="label__">
             {this.state.attributes.name.toUpperCase()}:{" "}
           </div>
           {this.state.attributes.name.toUpperCase() !== "COLOR" ? (
             <div className="sizes">
               {this.state.items.map((item, index) => (
-                <p className="size" key={index}>
+                <div
+                  className="size"
+                  key={index}
+                  onChange={() => this.props.func(item)}
+                >
                   {item.value}
-                </p>
+                </div>
               ))}
             </div>
           ) : (
@@ -41,6 +43,7 @@ export class Attributes extends PureComponent {
                     backgroundColor: `${item.value}`,
                     border: `${item.value}`,
                   }}
+                  onChange={() => this.props.func(item)}
                 ></p>
               ))}
             </div>
