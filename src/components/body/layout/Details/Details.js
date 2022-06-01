@@ -3,7 +3,6 @@ import React, { PureComponent } from "react";
 import "./Details.css";
 import { GET_PRODUCTS_BY_ID } from "../../../../server/queries";
 // import cartImg from "../../../../assets/cart.png";
-import Attributes from "../../Attributes/Attributes";
 import { connect } from "react-redux";
 import { addProductToCart } from "../../../../Redux/shop/actions";
 
@@ -34,17 +33,19 @@ export class Details extends PureComponent {
     this.setState({ mainPic: photo });
   };
 
-  handleOnChange = ({ attr }) => {
-    const attributes = this.state.attributes;
+  handleOnChange = ({ target }) => {
+    const { attributes } = this.state;
+    const nextState = attributes.map((a) => {
+      if (a.name !== target.name) return a;
 
-    const nextState = attributes.map((item) => {
-      if (item.id !== attr.name) return item;
       return {
-        ...item,
-        items: item.items.map((i) => {
-          const checked = i.value === attr.value;
+        ...a,
+        items: a.items.map((item) => {
+          const checked = item.value === target.value;
+          // console.log("check", checked);
+
           return {
-            ...i,
+            ...item,
             selected: checked,
           };
         }),
@@ -55,8 +56,29 @@ export class Details extends PureComponent {
       attributes: nextState,
       warningMessage: "",
     });
+  };
 
-    console.log(this.state.attributes);
+  addProductToCart = (product) => {
+    const isSelected = this.state.attributes.map((a) =>
+      a.items.find((i) => i.selected === true)
+    );
+    //testintg whether all elements in the isSellected array is not undefined
+    if (isSelected.every((item) => item !== undefined)) {
+      console.log("id check", isSelected.map((i) => i.id).join(" "));
+      const newId = `${product.id} ${isSelected.map((i) => i.id).join(" ")}`;
+      const updatedProduct = {
+        ...product,
+        attributes: this.state.attributes,
+        qty: 1,
+        id: newId,
+      };
+
+      console.log("updated item", updatedProduct);
+      this.props.addProductToCart(updatedProduct);
+      this.setState({ warningMessage: "" });
+    } else {
+      this.setState({ warningMessage: "Choose attribute first!" });
+    }
   };
 
   render() {
@@ -65,6 +87,9 @@ export class Details extends PureComponent {
       <Query
         query={GET_PRODUCTS_BY_ID}
         variables={{ id: window.location.pathname.slice(9) }}
+        onCompleted={(data) =>
+          this.setState({ attributes: data.product.attributes })
+        }
         fetchPolicy="network-only"
       >
         {({ loading, error, data }) => {
@@ -73,9 +98,8 @@ export class Details extends PureComponent {
           if (data.product === undefined) return null;
 
           const product = data.product;
-
           const price = this.getPriceByCurrency(product.prices);
-
+          const description = product.description;
           // console.log("Cart Items", cartItems);
 
           return (
@@ -106,13 +130,57 @@ export class Details extends PureComponent {
                 <p className="product__brand">{product.brand}</p>
                 <br />
 
-                <div className="attributes">
-                  {product.attributes.map((item, index) => (
+                <div className="attributes-all">
+                  {/* product.attributes.map((item, index) => (
                     <Attributes
                       attributes={item}
                       product={product}
                       func={this.handleOnChange}
                     />
+                  ))*/}
+
+                  {product.attributes.map((a) => (
+                    <div className="attributes" key={`${product.id} ${a.id}`}>
+                      <p className="attributes__title title">{`${a.name}:`}</p>
+                      <div className="attributes__list">
+                        {a.items.map((item, i) => (
+                          <div key={`${product.id} ${item.id}`}>
+                            <input
+                              type="radio"
+                              id={`${a.id} ${item.id}`}
+                              name={a.name}
+                              value={item.value}
+                              disabled={product.inStock ? false : true}
+                              checked={item.selected}
+                              onChange={this.handleOnChange}
+                            />
+                            <label htmlFor={`${a.id} ${item.id}`}>
+                              <div
+                                className={
+                                  a.type !== "swatch"
+                                    ? "attributes__text"
+                                    : "attributes__color"
+                                }
+                                style={
+                                  a.type === "swatch"
+                                    ? {
+                                        background: item.value,
+                                        border: `1px solid ${
+                                          item.id === "White"
+                                            ? "black"
+                                            : item.value
+                                        }`,
+                                      }
+                                    : null
+                                }
+                              >
+                                {a.type === "swatch" ? "" : item.value}
+                              </div>
+                            </label>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   ))}
                 </div>
 
@@ -126,13 +194,16 @@ export class Details extends PureComponent {
                   </div>
                 </div>
 
-                <div
-                  onClick={() => {
-                    onAdd(product);
-                  }}
-                  className="add_to_cart"
-                >
-                  ADD TO CART
+                <div className="button-block">
+                  <div
+                    onClick={() => {
+                      this.addProductToCart(product);
+                    }}
+                    className="add_to_cart"
+                  >
+                    ADD TO CART
+                  </div>
+                  <p className="warning red">{this.state.warningMessage}</p>
                 </div>
 
                 <div

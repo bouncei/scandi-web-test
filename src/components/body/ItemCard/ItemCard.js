@@ -110,9 +110,9 @@ class ItemCard extends PureComponent {
                   {!item.inStock && <div className="stock">OUT OF STOCK</div>}
                 </div>
 
-                <div className="green-cart">
+                <Link className="green-cart" to="/cart">
                   <CartIcon onClick={() => this.addToCart(item)} />
-                </div>
+                </Link>
 
                 <div className="details">
                   <p className="item__name">{item.name}</p>

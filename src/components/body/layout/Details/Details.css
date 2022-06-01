@@ -116,3 +116,86 @@
     margin-top: 1em;
     margin-bottom: 1em;
 }
+
+
+
+
+/* REFACTORING CODE  */
+
+.attributes-all {
+    margin: 43px 0 40px;
+}
+
+.attributes {
+    margin-bottom: 20px;
+}
+
+.attributes__title {
+    margin-bottom: 8px;
+}
+
+.attributes__list {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+}
+
+input {
+    display: none;
+}
+
+.attributes__text {
+    width: 63px;
+    height: 45px;
+    margin-right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #1D1F22;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0.05em;
+    font-family: 'Source Sans Pro', sans-serif;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+:checked+label .attributes__text {
+    background: #1D1F22;
+    color: #FFFFFF;
+}
+
+
+:disabled+label .attributes__text {
+    border: 1px solid #A6A6A6;
+    color: #A6A6A6;
+    cursor: default;
+}
+
+.attributes__color {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    cursor: pointer;
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+}
+
+:checked+label .attributes__color {
+    box-shadow:
+        0 0 0 1px #FFFFFF,
+        0 0 0 2px #5ECE7B;
+}
+
+
+.warning {
+    height: 15px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.red {
+    color: red;
+}

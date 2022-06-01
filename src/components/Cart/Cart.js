@@ -1,14 +1,24 @@
 import React, { PureComponent } from "react";
 import "./Cart.css";
-import { addProductToCart } from "../../Redux/shop/actions";
-import { removeProductFromCart } from "../../Redux/shop/actions";
+import {
+  addProductToCart,
+  removeProductFromCart,
+} from "../../Redux/shop/actions";
 import { checkout } from "../../Redux/shop/actions";
 import { connect } from "react-redux";
-export class Cart extends PureComponent {
-  render() {
-    // const { cartItems, onAdd, onRemove } = this.props;
+class Cart extends PureComponent {
+  removeProductFromCart = (product) => {
+    this.props.removeProductFromCart(product);
+  };
 
-    console.log("passed props", cartItems);
+  addProductToCart = (product) => {
+    this.props.addProductToCart(product);
+  };
+  render() {
+    // checkout = () => {};
+
+    const cartItems = this.props.cart;
+    console.log("cart Items", cartItems);
     return (
       <div className="cart_component">
         <h2>Cart Items</h2>
@@ -62,9 +72,8 @@ export class Cart extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    symbol: state.symbol,
-    cart: state.cart,
-    totalQty: state.totalQty,
+    cart: state.shop.cart,
+    totalQty: state.shop.totalQty,
   };
 };
 
