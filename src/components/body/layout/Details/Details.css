@@ -50,11 +50,13 @@
 
 }
 
-.label {
+.label,
+.attributes__title {
     margin-top: 20px;
     margin-bottom: -17px;
     font-weight: 700;
     font-size: large;
+    text-transform: uppercase;
 }
 
 
