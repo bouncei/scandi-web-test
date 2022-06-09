@@ -5,7 +5,7 @@
 }
 
 .header {
-    padding: 20px 33px;
+    padding: 20px 9px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -50,8 +50,7 @@
 .link:hover {
     transform: scale(1.06);
     color: var(--hover-color);
-    text-decoration: underline;
-
+    border-bottom: #5ECE7B solid;
 
 }
 

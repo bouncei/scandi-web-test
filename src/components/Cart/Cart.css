@@ -1,3 +1,7 @@
+.cart_component {
+    padding: 0px 26px;
+}
+
 .cart_item,
 .images_of_item {
     display: flex;
@@ -12,6 +16,15 @@
     color: #1D1F22;
     margin: 80px 0 55px;
     text-transform: uppercase;
+}
+
+.product__brand {
+    font-size: xx-large;
+    font-weight: 270;
+}
+
+.product__name {
+    font-weight: bold;
 }
 
 .grey-line {
@@ -35,6 +48,11 @@
 .activity_button {
     border: 1px solid black;
     padding: 10px;
+    cursor: pointer;
+}
+
+.activity_button:hover {
+    opacity: 0.3;
 }
 
 .item_image {

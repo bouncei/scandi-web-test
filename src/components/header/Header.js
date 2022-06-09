@@ -1,6 +1,9 @@
 import React from "react";
 import "./Header.css";
-import down from "../../assets/down.svg";
+import { ReactComponent as Down } from "../../pics/down.svg";
+import { ReactComponent as Cart } from "../../pics/cart.svg";
+import trolley from "../../pics/trolley.png";
+
 // import an icon for direction-up too
 import { PureComponent } from "react";
 import ToggleCart from "./toggleCart/ToggleCart";
@@ -58,9 +61,23 @@ export class Header extends PureComponent {
                 this.setState({ toggleCurr: !this.state.toggleCurr });
               }}
             >
-              CurrencyIcon
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <p
+                  style={{
+                    paddingRight: 5,
+                  }}
+                >
+                  {localStorage.getItem("symbol")}
+                </p>
+                <Down />
+              </div>
             </div>
-            <img src={down} alt="" height={15} width={20} />
             <div
               className={`dropdown-menu ${
                 this.state.toggleCurr && "active-menu"
@@ -82,9 +99,29 @@ export class Header extends PureComponent {
                 this.setState({ toggleCart: !this.state.toggleCart });
               }}
             >
-              CartIcon
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <p
+                  style={{
+                    paddingRight: 5,
+                  }}
+                >
+                  <img
+                    src={trolley}
+                    alt=""
+                    height={23}
+                    // width={20}
+                    style={{ objectFit: "contain" }}
+                  />
+                </p>
+                <Down />
+              </div>
             </div>
-            <img src={down} alt="" height={15} width={20} />
 
             <div
               className={`dropdown ${this.state.toggleCart && "active-menu"}`}

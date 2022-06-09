@@ -5,6 +5,7 @@ import { GET_PRODUCTS_BY_ID } from "../../../../server/queries";
 // import cartImg from "../../../../assets/cart.png";
 import { connect } from "react-redux";
 import { addProductToCart } from "../../../../Redux/shop/actions";
+import { Link } from "react-router-dom";
 
 export class Details extends PureComponent {
   constructor(props) {
@@ -13,6 +14,7 @@ export class Details extends PureComponent {
       mainPic: "",
       attributes: [],
       warningMessage: "",
+      success: "",
     };
   }
 
@@ -76,8 +78,10 @@ export class Details extends PureComponent {
       console.log("updated item", updatedProduct);
       this.props.addProductToCart(updatedProduct);
       this.setState({ warningMessage: "" });
+      this.setState({ success: "yes" });
     } else {
       this.setState({ warningMessage: "Choose attribute first!" });
+      this.setState({ success: "" });
     }
   };
 
@@ -203,7 +207,14 @@ export class Details extends PureComponent {
                   >
                     ADD TO CART
                   </div>
-                  <p className="warning red">{this.state.warningMessage}</p>
+                  {this.state.success !== "yes" ? (
+                    <p className="warning red">{this.state.warningMessage}</p>
+                  ) : (
+                    <p className="success green">
+                      Item has been added to cart!{" "}
+                      <Link to="/"> continue shopping</Link>
+                    </p>
+                  )}
                 </div>
 
                 <div

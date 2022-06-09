@@ -7,12 +7,13 @@
     font: 'Raleway';
     transition: all 300ms ease-in-out;
     text-transform: uppercase;
+    padding-bottom: 16px;
 }
 
 
 .CategoryItem:hover {
     transform: scale(1.06);
     color: #5ECE7B;
-    text-decoration: underline;
+    border-bottom: #5ECE7B solid;
 
 }

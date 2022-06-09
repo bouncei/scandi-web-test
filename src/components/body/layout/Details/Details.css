@@ -2,6 +2,8 @@
     display: flex;
     /* align-items: center; */
     justify-content: space-between;
+    padding: 0px 26px;
+
 }
 
 /* IMAGES SECTION */
@@ -191,7 +193,8 @@ input {
 }
 
 
-.warning {
+.warning,
+.success {
     height: 15px;
     margin-bottom: 25px;
     font-size: 16px;
@@ -200,4 +203,8 @@ input {
 
 .red {
     color: red;
+}
+
+.green {
+    color: green;
 }
