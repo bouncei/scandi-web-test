@@ -122,6 +122,9 @@ class Cart extends PureComponent {
               </div>
 
               <hr width="auto" color="#E5E5E5" size="1" />
+
+              {/* Cart Arithemetics */}
+              <div></div>
             </div>
           );
         })}
