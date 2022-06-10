@@ -1,5 +1,8 @@
 .cart_component {
     padding: 0px 26px;
+    /* padding-bottom: 20px; */
+    padding-bottom: 20rem;
+
 }
 
 .cart_item,
@@ -61,3 +64,21 @@
     object-fit: contain;
     padding: 0px 9px;
 }
+
+.cart__result div {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+
+.cart__result p {
+    padding-left: 10px;
+    font-weight: 600;
+}
+
+
+/* .cart__result {
+
+    padding-bottom: 90px;
+} */

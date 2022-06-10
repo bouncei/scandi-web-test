@@ -41,6 +41,26 @@ class Cart extends PureComponent {
     }
   };
 
+  getTotalPrice = () => {
+    const totalPrice = this.props.cart.reduce((acc, item) => {
+      if (item.prices && localStorage.getItem("symbol")) {
+        let price = item.prices.find(
+          (p) => p.currency.symbol === localStorage.getItem("symbol")
+        );
+        return acc + price.amount * item.qty;
+      } else {
+        let price = item.prices.find((p) => p.currency.symbol === "$");
+        return acc + price.amount * item.qty;
+      }
+    }, 0);
+    return Math.round(totalPrice * 100) / 100;
+  };
+
+  getTax = () => {
+    const tax = (this.getTotalPrice() / 100) * 12;
+    return Math.round(tax * 10) / 10;
+  };
+
   componentDidMount() {
     this.setState({ symbol: localStorage.getItem("symbol") });
   }
@@ -122,12 +142,35 @@ class Cart extends PureComponent {
               </div>
 
               <hr width="auto" color="#E5E5E5" size="1" />
-
-              {/* Cart Arithemetics */}
-              <div></div>
             </div>
           );
         })}
+
+        {/* Cart Arithemetics */}
+        <div className="cart__result">
+          <div className="tax">
+            <div>Tax 21%:</div>
+            <p>
+              {localStorage.getItem("symbol")
+                ? localStorage.getItem("symbol")
+                : "$"}
+              {this.getTax()}
+            </p>
+          </div>
+          <div className="qty">
+            <div>Qty:</div>
+            <p>{this.props.totalQty}</p>
+          </div>
+          <div className="total">
+            <div>Total:</div>
+            <p>
+              {localStorage.getItem("symbol")
+                ? localStorage.getItem("symbol")
+                : "$"}
+              {this.getTotalPrice()}
+            </p>
+          </div>
+        </div>
       </div>
     );
   }

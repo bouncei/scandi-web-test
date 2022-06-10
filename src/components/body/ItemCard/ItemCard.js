@@ -48,6 +48,7 @@ class ItemCard extends PureComponent {
         id: `${product.id} ${selectedAttribute.map((i) => i.id).join(" ")}`,
       };
       this.props.addProductToCart(updatedProduct);
+      window.location.replace("/cart");
     }
     console.log("Add to cart function", product);
   };
@@ -110,9 +111,9 @@ class ItemCard extends PureComponent {
                   {!item.inStock && <div className="stock">OUT OF STOCK</div>}
                 </div>
 
-                <Link className="green-cart" to="/cart">
+                <div className="green-cart">
                   <CartIcon onClick={() => this.addToCart(item)} />
-                </Link>
+                </div>
 
                 <div className="details">
                   <p className="item__name">{item.name}</p>

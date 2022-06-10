@@ -3,7 +3,7 @@ import "./CartAttributes.css";
 
 export class CartAttributes extends PureComponent {
   render() {
-    console.log("cart details", this.props);
+    // console.log("cart details", this.props);
     const { index, id, attributes } = this.props;
 
     return (
