@@ -81,8 +81,9 @@
 
 .dropdown-menu {
     position: absolute;
-    left: 0;
-    top: calc(100% + 1.2rem);
+    right: calc(100% - 5rem);
+    /* left: 0; */
+    top: calc(100% + .2rem);
     padding: .75rem;
     border-radius: .25rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
@@ -110,4 +111,27 @@
 
 .currency:hover {
     color: var(--dropdown-click)
+}
+
+.mini-cart__header {
+    position: relative;
+    padding: 9px 0;
+    cursor: pointer;
+}
+
+.mini-cart__quantity {
+    position: absolute;
+    bottom: 15px;
+    left: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #1D1F22;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 14px;
+    color: #FFFFFF;
 }

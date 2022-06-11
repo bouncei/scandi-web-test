@@ -1,7 +1,6 @@
 import React from "react";
 import "./Header.css";
 import { ReactComponent as Down } from "../../pics/down.svg";
-import { ReactComponent as Cart } from "../../pics/cart.svg";
 import trolley from "../../pics/trolley.png";
 
 // import an icon for direction-up too
@@ -11,6 +10,7 @@ import CategorySwitch from "./CategorySwitch/CategorySwitch";
 import Currency from "./Currency/Currency";
 
 import { ReactComponent as HeaderLogo } from "../../pics/header-logo.svg";
+import { connect } from "react-redux";
 
 export class Header extends PureComponent {
   constructor(props) {
@@ -34,6 +34,9 @@ export class Header extends PureComponent {
   };
 
   render() {
+    const { totalQty, cart } = this.props;
+
+    console.log(totalQty);
     return (
       <div className="header">
         {/*<p>Header PureComponent for {this.props.name}!</p> */}
@@ -42,11 +45,13 @@ export class Header extends PureComponent {
           Create a class component for switching categories  
         */}
         <div className="headerItems" onClick={this.refreshPage}>
-          <CategorySwitch />
+          <CategorySwitch length={cart.length} qty={totalQty} />
         </div>
 
         {/* Centered Element */}
-        <HeaderLogo />
+        <div className="" onClick={() => {}}>
+          <HeaderLogo />
+        </div>
 
         {/*Right side*/}
         <div className="endItems">
@@ -106,7 +111,7 @@ export class Header extends PureComponent {
                   justifyContent: "space-between",
                 }}
               >
-                <p
+                <div
                   style={{
                     paddingRight: 5,
                   }}
@@ -118,7 +123,10 @@ export class Header extends PureComponent {
                     // width={20}
                     style={{ objectFit: "contain" }}
                   />
-                </p>
+                  {cart.length !== 0 && (
+                    <div className="mini-cart__quantity">{totalQty}</div>
+                  )}
+                </div>
                 <Down />
               </div>
             </div>
@@ -134,4 +142,13 @@ export class Header extends PureComponent {
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.shop.cart,
+    totalQty: state.shop.totalQty,
+  };
+};
+
+const functionFromConnect = connect(mapStateToProps, null);
+
+export default functionFromConnect(Header);

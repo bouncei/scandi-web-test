@@ -113,7 +113,7 @@ export class Details extends PureComponent {
                 <div className="SmallImg">
                   {product.gallery.map((item, index) => (
                     <img
-                      key={item.id}
+                      key={index}
                       className="iSmall"
                       onClick={() => this.setMainPic(item)}
                       src={item}
