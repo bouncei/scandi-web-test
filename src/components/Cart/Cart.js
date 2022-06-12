@@ -18,12 +18,10 @@ class Cart extends PureComponent {
     };
   }
   removeProductFromCart = (product) => {
-    console.log(product);
     this.props.removeProductFromCart(product);
   };
 
   addProductToCart = (product) => {
-    console.log("product", product);
     this.props.addProductToCart(product);
   };
 
@@ -73,104 +71,107 @@ class Cart extends PureComponent {
         <div className="grey-line">
           <hr width="auto" color="#E5E5E5" size="1" />
         </div>
-        <div>
-          {cartItems.length === 0 && <p className="empty">Cart Is Empty</p>}
-        </div>
+        <div></div>
+        {cartItems.length === 0 ? (
+          <p className="empty">Cart Is Empty</p>
+        ) : (
+          <div>
+            {cartItems.map((item, index) => {
+              return (
+                <div key={item.id}>
+                  <div className="cart_item">
+                    {/* Left Hand side Details */}
+                    <div className="details_of_item">
+                      <Link
+                        to={`/details/${item.id.split(" ")[0]}`}
+                        style={{ color: "black", textDecorationLine: "none" }}
+                      >
+                        <h2 className="product__name">{item.name}</h2>
+                        <p className="product__brand">{item.brand}</p>
+                      </Link>
+                      <div className="price">
+                        <Prices
+                          getPrice={() => this.getPriceByCurrency(item.prices)}
+                          symbol={this.state.symbol}
+                        />
+                      </div>
 
-        {cartItems.map((item, index) => {
-          return (
-            <div key={item.id}>
-              <div className="cart_item">
-                {/* Left Hand side Details */}
-                <div className="details_of_item">
-                  <Link
-                    to={`/details/${item.id.split(" ")[0]}`}
-                    style={{ color: "black", textDecorationLine: "none" }}
-                  >
-                    <h2 className="product__name">{item.name}</h2>
-                    <p className="product__brand">{item.brand}</p>
-                  </Link>
-                  <div className="price">
-                    <Prices
-                      getPrice={() => this.getPriceByCurrency(item.prices)}
-                      symbol={this.state.symbol}
-                    />
+                      <CartAttributes {...item} index={index} />
+                    </div>
+
+                    <div className="images_of_item">
+                      <div className="activity">
+                        <div
+                          onClick={() => {
+                            this.addProductToCart(item);
+                          }}
+                          className="activity_button"
+                        >
+                          +
+                        </div>
+
+                        <div className="qty">
+                          <span>{item.qty}</span>
+                        </div>
+
+                        <div
+                          className="activity_button"
+                          onClick={() => {
+                            this.removeProductFromCart(item);
+                          }}
+                        >
+                          -
+                        </div>
+                      </div>
+                      {/* Add Image Slider */}
+                      <div className="image_slider">
+                        <img
+                          src={item.gallery[0]}
+                          alt="item_image"
+                          className="item_image"
+                          style={{
+                            borderRadius: "8px",
+                            maxWidth: "100%",
+                            aspectRatio: "1 / 1",
+                          }}
+                        />
+                      </div>
+                      <img />
+                    </div>
                   </div>
 
-                  <CartAttributes {...item} index={index} />
+                  <hr width="auto" color="#E5E5E5" size="1" />
                 </div>
+              );
+            })}
 
-                <div className="images_of_item">
-                  <div className="activity">
-                    <div
-                      onClick={() => {
-                        this.addProductToCart(item);
-                      }}
-                      className="activity_button"
-                    >
-                      +
-                    </div>
-
-                    <div className="qty">
-                      <span>{item.qty}</span>
-                    </div>
-
-                    <div
-                      className="activity_button"
-                      onClick={() => {
-                        this.removeProductFromCart(item);
-                      }}
-                    >
-                      -
-                    </div>
-                  </div>
-                  {/* Add Image Slider */}
-                  <div className="image_slider">
-                    <img
-                      src={item.gallery[0]}
-                      alt="item_image"
-                      className="item_image"
-                      style={{
-                        borderRadius: "8px",
-                        maxWidth: "100%",
-                        aspectRatio: "1 / 1",
-                      }}
-                    />
-                  </div>
-                  <img />
+            {/* Cart Arithemetics */}
+            <div className="cart__result">
+              <div className="tax">
+                <div>Tax 21%:</div>
+                <div>
+                  {localStorage.getItem("symbol")
+                    ? localStorage.getItem("symbol")
+                    : "$"}
+                  {this.getTax()}
                 </div>
               </div>
-
-              <hr width="auto" color="#E5E5E5" size="1" />
+              <div className="qty">
+                <div>Qty:</div>
+                <p>{this.props.totalQty}</p>
+              </div>
+              <div className="total">
+                <div>Total:</div>
+                <div>
+                  {localStorage.getItem("symbol")
+                    ? localStorage.getItem("symbol")
+                    : "$"}
+                  {this.getTotalPrice()}
+                </div>
+              </div>
             </div>
-          );
-        })}
-
-        {/* Cart Arithemetics */}
-        <div className="cart__result">
-          <div className="tax">
-            <div>Tax 21%:</div>
-            <p>
-              {localStorage.getItem("symbol")
-                ? localStorage.getItem("symbol")
-                : "$"}
-              {this.getTax()}
-            </p>
           </div>
-          <div className="qty">
-            <div>Qty:</div>
-            <p>{this.props.totalQty}</p>
-          </div>
-          <div className="total">
-            <div>Total:</div>
-            <p>
-              {localStorage.getItem("symbol")
-                ? localStorage.getItem("symbol")
-                : "$"}
-              {this.getTotalPrice()}
-            </p>
-          </div>
-        </div>
+        )}
       </div>
     );
   }

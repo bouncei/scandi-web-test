@@ -2,18 +2,14 @@
     opacity: 1;
 
     position: absolute;
-    /* left: 0; */
     right: calc(100% - 2.5rem);
-    /* top: calc(100% + 1.2rem); */
     top: calc(100% + .2rem);
 
-    /* top: calc(100% + .35rem); */
     overflow: hidden;
     padding: .75rem;
-    /* width: 200px; */
-    /* padding-right: 30rem; */
     border-radius: .25rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+    z-index: 999;
 
     transition: opaciity 150ms ease-in-out;
     background-color: white;
@@ -135,9 +131,21 @@
 
 .mini-cart-item__quantity .btn-plus,
 .mini-cart-item__quantity .btn-minus {
-    width: 24px;
-    height: 24px;
+    /* width: 24px;
+    height: 24px; */
+    border: 1px solid black;
+    padding: 4px 8px;
+
 }
+
+
+.mini-cart-item__quantity .btn-plus:hover,
+.mini-cart-item__quantity .btn-minus:hover {
+
+    opacity: 0.3;
+}
+
+
 
 .mini-cart-item__quantity .btn-plus span,
 .mini-cart-item__quantity .btn-minus span {
@@ -153,4 +161,70 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    padding: 20px 7px;
+}
+
+
+
+.mini-cart__total-price {
+    margin: 32px 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.mini-cart__total-price p:first-child {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 112%;
+}
+
+.mini-cart__total-price p:last-child {
+    font-family: 'Raleway';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 160%;
+}
+
+.mini-cart__btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mini-cart__btn {
+    width: 140px;
+    height: 43px;
+    text-transform: uppercase;
+    font-family: 'Raleway';
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.mini-cart__btn:active {
+    transform: scale(0.97);
+}
+
+.btn-view {
+    background: #FFFFFF;
+    border: 1px solid #1D1F22;
+    color: #1D1F22;
+    margin-right: 20px;
+}
+
+.btn-checkout {
+    background: #5ECE7B;
+    color: #FFFFFF;
+}
+
+
+.btn-checkout:hover,
+.btn-view:hover {
+    opacity: 0.78;
 }

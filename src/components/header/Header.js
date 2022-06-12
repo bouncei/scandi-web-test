@@ -30,13 +30,11 @@ export class Header extends PureComponent {
   optionClickHandler = (symbol) => {
     this.setState({ symbol, isOpen: false });
     localStorage.setItem("symbol", symbol);
-    // console.log("Selected Symbol", localStorage.getItem("symbol"));
   };
 
   render() {
     const { totalQty, cart } = this.props;
 
-    console.log(totalQty);
     return (
       <div className="header">
         {/*<p>Header PureComponent for {this.props.name}!</p> */}

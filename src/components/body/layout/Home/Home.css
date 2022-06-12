@@ -1,7 +1,9 @@
 .layout {
     margin: 30px;
     padding: 3px 0;
+
 }
+
 
 
 .category__title {
@@ -18,13 +20,6 @@
 .products {
     display: flex;
     flex-wrap: wrap;
-    /* align-items: left !important; */
-    /* margin: auto; */
+
 
 }
-
-/* .products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmas(100px, 1fr));
-
-} */

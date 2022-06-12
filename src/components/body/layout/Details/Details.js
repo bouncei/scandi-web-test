@@ -44,7 +44,6 @@ export class Details extends PureComponent {
         ...a,
         items: a.items.map((item) => {
           const checked = item.value === target.value;
-          // console.log("check", checked);
 
           return {
             ...item,
@@ -66,7 +65,6 @@ export class Details extends PureComponent {
     );
     //testintg whether all elements in the isSellected array is not undefined
     if (isSelected.every((item) => item !== undefined)) {
-      console.log("id check", isSelected.map((i) => i.id).join(" "));
       const newId = `${product.id} ${isSelected.map((i) => i.id).join(" ")}`;
       const updatedProduct = {
         ...product,
@@ -75,7 +73,6 @@ export class Details extends PureComponent {
         id: newId,
       };
 
-      console.log("updated item", updatedProduct);
       this.props.addProductToCart(updatedProduct);
       this.setState({ warningMessage: "" });
       this.setState({ success: "yes" });
@@ -104,7 +101,6 @@ export class Details extends PureComponent {
           const product = data.product;
           const price = this.getPriceByCurrency(product.prices);
           const description = product.description;
-          // console.log("Cart Items", cartItems);
 
           return (
             <div className="detailed_details">

@@ -1,12 +1,12 @@
 import React, { PureComponent, createRef } from "react";
 import "./ToggleCart.css";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   removeProductFromCart,
   addProductToCart,
   checkout,
 } from "../../../Redux/shop/actions";
-import trolley from "../../../pics/trolley.png";
 import Prices from "../Prices/Prices";
 export class ToggleCart extends PureComponent {
   constructor(props) {
@@ -16,6 +16,8 @@ export class ToggleCart extends PureComponent {
       symbol: "",
     };
   }
+
+  bo;
 
   componentDidMount() {
     this.setState({ symbol: localStorage.getItem("symbol") });
@@ -43,7 +45,6 @@ export class ToggleCart extends PureComponent {
         return acc + price.amount * item.qty;
       }
     }, 0);
-    // console.log("Total Price in Mini Cart", totalPrice);
     return Math.round(totalPrice * 100) / 100;
   };
 
@@ -63,7 +64,7 @@ export class ToggleCart extends PureComponent {
   render() {
     const { cart } = this.props;
     return (
-      <div className="toggle__cart">
+      <div className="toggle__cart" ref={this.box}>
         {/* Minit Cart Items */}
         {cart.map((item, index) => (
           <div key={index}>
@@ -71,12 +72,12 @@ export class ToggleCart extends PureComponent {
               <div className="mini-cart-item__info">
                 <p className="brand">{item.brand}</p>
                 <p className="name">{item.name}</p>
-                <p className="price_value">
+                <div className="price_value">
                   <Prices
                     getPrice={() => this.getPriceByCurrency(item.prices)}
                     symbol={this.state.symbol}
                   />
-                </p>
+                </div>
                 <div className="mini-cart-item__attributes">
                   {item.attributes.map((a) => (
                     <div className="attributes" key={`${item.id} ${a.name}`}>
@@ -124,16 +125,18 @@ export class ToggleCart extends PureComponent {
               </div>
               <div className="mini-cart-item__right">
                 <div className="mini-cart-item__quantity">
-                  <div className="btn-plus" onClick={() => this.plusItem(item)}>
-                    <span></span>
-                    <span></span>
+                  <div
+                    className="btn-plus"
+                    onClick={() => this.addToCart(item)}
+                  >
+                    <span>+</span>
                   </div>
                   <div className="quantity">{item.qty}</div>
                   <div
                     className="btn-minus"
-                    onClick={() => this.minusItem(item)}
+                    onClick={() => this.removeFromCart(item)}
                   >
-                    <span></span>
+                    <span>-</span>
                   </div>
                 </div>
                 <div className="mini-cart-item__gallery">
@@ -143,6 +146,32 @@ export class ToggleCart extends PureComponent {
             </div>
           </div>
         ))}
+
+        <div className="mini-cart__total-price">
+          <p>Total</p>
+          <p>
+            {localStorage.getItem("symbol")
+              ? localStorage.getItem("symbol")
+              : "$"}
+            {this.getTotalPrice()}
+          </p>
+        </div>
+        <div className="mini-cart__btns">
+          <Link to={"/cart"}>
+            <button
+              className="btn-view mini-cart__btn"
+              onClick={this.changeHandler}
+            >
+              View bag
+            </button>
+          </Link>
+          <button
+            className="btn-checkout mini-cart__btn"
+            onClick={() => this.props.checkout()}
+          >
+            Checkout
+          </button>
+        </div>
       </div>
     );
   }

@@ -50,7 +50,6 @@ class ItemCard extends PureComponent {
       this.props.addProductToCart(updatedProduct);
       window.location.replace("/cart");
     }
-    console.log("Add to cart function", product);
   };
 
   componentDidMount() {
