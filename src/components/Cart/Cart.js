@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import Prices from "../header/Prices/Prices";
 import { Link } from "react-router-dom";
 import CartAttributes from "./CartAttributes/CartAttributes";
+import Slider from "./Slider/Slider";
 class Cart extends PureComponent {
   constructor(props) {
     super(props);
@@ -105,7 +106,7 @@ class Cart extends PureComponent {
                           onClick={() => {
                             this.addProductToCart(item);
                           }}
-                          className="activity_button"
+                          className="activity_button plus"
                         >
                           +
                         </div>
@@ -115,7 +116,7 @@ class Cart extends PureComponent {
                         </div>
 
                         <div
-                          className="activity_button"
+                          className="activity_button minus"
                           onClick={() => {
                             this.removeProductFromCart(item);
                           }}
@@ -125,7 +126,7 @@ class Cart extends PureComponent {
                       </div>
                       {/* Add Image Slider */}
                       <div className="image_slider">
-                        <img
+                        {/*                       <img
                           src={item.gallery[0]}
                           alt="item_image"
                           className="item_image"
@@ -134,7 +135,9 @@ class Cart extends PureComponent {
                             maxWidth: "100%",
                             aspectRatio: "1 / 1",
                           }}
-                        />
+                        />*/}
+
+                        <Slider gallery={item.gallery} />
                       </div>
                       <img />
                     </div>
@@ -150,10 +153,12 @@ class Cart extends PureComponent {
               <div className="tax">
                 <div>Tax 21%:</div>
                 <div>
-                  {localStorage.getItem("symbol")
-                    ? localStorage.getItem("symbol")
-                    : "$"}
-                  {this.getTax()}
+                  <p>
+                    {localStorage.getItem("symbol")
+                      ? localStorage.getItem("symbol")
+                      : "$"}
+                    {this.getTax()}
+                  </p>
                 </div>
               </div>
               <div className="qty">
@@ -163,12 +168,21 @@ class Cart extends PureComponent {
               <div className="total">
                 <div>Total:</div>
                 <div>
-                  {localStorage.getItem("symbol")
-                    ? localStorage.getItem("symbol")
-                    : "$"}
-                  {this.getTotalPrice()}
+                  <p>
+                    {localStorage.getItem("symbol")
+                      ? localStorage.getItem("symbol")
+                      : "$"}
+                    {this.getTotalPrice()}
+                  </p>
                 </div>
               </div>
+            </div>
+
+            <div
+              onClick={() => this.props.checkout()}
+              className="cart_checkout"
+            >
+              ORDER
             </div>
           </div>
         )}

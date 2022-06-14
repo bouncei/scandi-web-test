@@ -1,8 +1,8 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import "./Slider.css";
-import { ReactComponent as CartVector } from "../../pics/slider-vector.svg";
+import { ReactComponent as CartVector } from "../../../pics/slider-vector.svg";
 
-export default class Slider extends React.Component {
+export default class Slider extends PureComponent {
   state = {
     current: 0,
   };

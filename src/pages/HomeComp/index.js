@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Home from "../../components/body/layout/Home/Home";
-// import Layout from "../../components/body/layout/Layout";
 import Header from "../../components/header/Header";
 
-export class ParentComp extends Component {
+export class ParentComp extends PureComponent {
   constructor(props) {
     super(props);
 

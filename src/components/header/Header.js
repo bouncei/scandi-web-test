@@ -2,13 +2,10 @@ import React from "react";
 import "./Header.css";
 import { ReactComponent as Down } from "../../pics/down.svg";
 import trolley from "../../pics/trolley.png";
-
-// import an icon for direction-up too
 import { PureComponent } from "react";
 import ToggleCart from "./toggleCart/ToggleCart";
 import CategorySwitch from "./CategorySwitch/CategorySwitch";
 import Currency from "./Currency/Currency";
-
 import { ReactComponent as HeaderLogo } from "../../pics/header-logo.svg";
 import { connect } from "react-redux";
 
@@ -37,11 +34,7 @@ export class Header extends PureComponent {
 
     return (
       <div className="header">
-        {/*<p>Header PureComponent for {this.props.name}!</p> */}
-
-        {/* Left side
-          Create a class component for switching categories  
-        */}
+        {/* Left side */}
         <div className="headerItems" onClick={this.refreshPage}>
           <CategorySwitch length={cart.length} qty={totalQty} />
         </div>
@@ -107,6 +100,7 @@ export class Header extends PureComponent {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
+                  marginRight: 5,
                 }}
               >
                 <div
@@ -118,14 +112,12 @@ export class Header extends PureComponent {
                     src={trolley}
                     alt=""
                     height={23}
-                    // width={20}
                     style={{ objectFit: "contain" }}
                   />
                   {cart.length !== 0 && (
                     <div className="mini-cart__quantity">{totalQty}</div>
                   )}
                 </div>
-                <Down />
               </div>
             </div>
 

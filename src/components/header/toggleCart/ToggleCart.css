@@ -32,6 +32,7 @@
     min-height: 150px;
     display: flex;
     justify-content: space-between;
+    padding: 6px 0px;
 }
 
 .mini-cart-item:not(:last-child) {
@@ -52,6 +53,8 @@
     line-height: 160%;
     margin-bottom: 8px;
 }
+
+
 
 .mini-cart-item__attributes .attributes:not(:last-child) {
     margin-bottom: 8px;
