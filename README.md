@@ -9,11 +9,11 @@
  - Clone this [repo](https://github.com/bouncei/scandi-web-test)
      `git clone https://github.com/bouncei/scandi-web-test `
  - Change directory into cloned folder
-   `cd scandiweb-assessment`
+   `cd scandi-web-test`
  - Install project dependencies 
-   `npm install`
+   `yarn install`
 - Run Project
-    `npm start`
+    `yarn start`
 - The project will start up in your localhost server
 
 
