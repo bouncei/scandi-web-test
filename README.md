@@ -1,6 +1,21 @@
 # Scandi Web Junior Developer Test
 
 
+# Running this project locally
+
+- To run this project locally, please follow these instructions:
+ - Click on this [link](https://github.com/scandiweb/junior-react-endpoint) for instructions on how to run the backend server for thi project
+
+ - Clone this [repo](https://github.com/bouncei/scandi-web-test)
+     `git clone https://github.com/mckent05/scandiweb-assessment.git `
+ - Change directory into cloned folder
+   `cd scandiweb-assessment`
+ - Install project dependencies 
+   `npm install`
+- Run Project
+    `npm start`
+- The project will start up in your localhost server
+
 
 ## Author
 
