@@ -7,7 +7,7 @@
  - Click on this [link](https://github.com/scandiweb/junior-react-endpoint) for instructions on how to run the backend server for thi project
 
  - Clone this [repo](https://github.com/bouncei/scandi-web-test)
-     `git clone https://github.com/mckent05/scandiweb-assessment.git `
+     `git clone https://github.com/bouncei/scandi-web-test `
  - Change directory into cloned folder
    `cd scandiweb-assessment`
  - Install project dependencies 
