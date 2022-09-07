@@ -1,4 +1,4 @@
-# Scandi Web Junior Developer Test
+# Scandi Web's Junior Developer Test
 
 
 # Running this project locally
